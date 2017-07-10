@@ -1,2 +1,3 @@
-# canteen
-Canteen gift card
+# Project Canteen
+
+Canteen gift card project skeleton.
