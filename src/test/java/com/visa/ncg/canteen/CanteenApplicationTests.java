@@ -9,19 +9,20 @@ import java.math.BigDecimal;
 import java.util.Currency;
 import java.util.Locale;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class CanteenApplicationTests {
 
-	@Test
-	public void contextLoads() {
-	}
+  @Test
+  public void contextLoads() {
+  }
 
-	@Test
+  @Test
   public void makeMoney() throws Exception {
-	  Money money = new Money(BigDecimal.valueOf(100), Currency.getInstance(Locale.getDefault()));
+    Money money = new Money(
+        BigDecimal.valueOf(100), Currency.getInstance(Locale.getDefault()));
     assertThat(money.getCurrency())
         .isEqualTo(Currency.getInstance(Locale.US));
     assertThat(money.getAmount())
