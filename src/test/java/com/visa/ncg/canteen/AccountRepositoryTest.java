@@ -1,5 +1,7 @@
 package com.visa.ncg.canteen;
 
+import com.visa.ncg.canteen.domain.AccountRepository;
+import com.visa.ncg.canteen.domain.NecessitiesAccount;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

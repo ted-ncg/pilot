@@ -1,4 +1,4 @@
-package com.visa.ncg.canteen;
+package com.visa.ncg.canteen.domain;
 
 public class NecessitiesAccount {
   private final int id;

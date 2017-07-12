@@ -1,7 +1,11 @@
 package com.visa.ncg.canteen;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.visa.ncg.canteen.adapter.AccountRestController;
+import com.visa.ncg.canteen.domain.AccountRepository;
+import com.visa.ncg.canteen.domain.NecessitiesAccount;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +14,7 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -30,6 +35,14 @@ public class AccountRestTest {
   @Before
   public void before() {
     objectMapper = springMvcJacksonConverter.getObjectMapper();
+  }
+
+  @Test
+  public void getExistingAccountWithId456ReturnsAccount() throws Exception {
+    AccountRepository accountRepository = new AccountRepository();
+    accountRepository.save(new NecessitiesAccount(456));
+    new AccountRestController(accountRepository);
+
   }
 
   @Test
@@ -56,6 +69,19 @@ public class AccountRestTest {
         .andExpect(status().isOk())
         .andExpect(jsonPath("$.id").value("123"))
         .andExpect(jsonPath("$.balance").value("0"));
+  }
+
+  @Test
+  @Ignore
+  public void postCreatesNewAccountWithId() throws Exception {
+    String contentAsString = mockMvc.perform(
+        post("/accounts")
+    ).andReturn().getResponse().getContentAsString();
+
+    NecessitiesAccount account = objectMapper.readValue(contentAsString, NecessitiesAccount.class);
+    assertThat(account.getId())
+        .isEqualTo(123);
+
   }
 
 }
