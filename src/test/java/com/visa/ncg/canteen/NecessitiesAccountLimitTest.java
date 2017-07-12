@@ -9,7 +9,7 @@ public class NecessitiesAccountLimitTest {
 
   @Test
   public void depositCausingBalanceToExceed50DollarsThrowsExceptionAndKeepsBalanceUnchanged() {
-    NecessitiesAccount necessitiesAccount = new NecessitiesAccount();
+    NecessitiesAccount necessitiesAccount = new NecessitiesAccount(0);
     necessitiesAccount.deposit(45);
 
     assertThatThrownBy(() -> necessitiesAccount.deposit(10))

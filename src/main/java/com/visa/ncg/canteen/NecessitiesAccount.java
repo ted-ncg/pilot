@@ -1,7 +1,12 @@
 package com.visa.ncg.canteen;
 
 public class NecessitiesAccount {
+  private final int id;
   private int balance;
+
+  public NecessitiesAccount(int id) {
+    this.id = id;
+  }
 
   public void deposit(int amount) {
     if (invalidDepositOf(amount)) {
@@ -25,5 +30,9 @@ public class NecessitiesAccount {
 
   public int getBalance() {
     return balance;
+  }
+
+  public int getId() {
+    return id;
   }
 }
