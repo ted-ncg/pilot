@@ -1,4 +1,4 @@
-package com.visa.ncg.canteen;
+package com.visa.ncg.canteen.data;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

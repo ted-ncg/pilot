@@ -1,7 +1,6 @@
-package com.visa.ncg.canteen;
+package com.visa.ncg.canteen.data;
 
-import com.visa.ncg.canteen.domain.AccountRepository;
-import com.visa.ncg.canteen.domain.NecessitiesAccount;
+import com.visa.ncg.canteen.domain.Account;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -11,7 +10,7 @@ public class AccountRepositoryTest {
   @Test
   public void findNonExistentAccountReturnsNull() {
     AccountRepository repository = new AccountRepository();
-    NecessitiesAccount account123 = repository.findById(123);
+    Account account123 = repository.findById(123);
     assertThat(account123)
         .isNull();
   }
@@ -20,7 +19,7 @@ public class AccountRepositoryTest {
   public void savingAccountWithId123CanBeFoundByItsId() throws Exception {
     AccountRepository repository = new AccountRepository();
 
-    NecessitiesAccount account = new NecessitiesAccount(123);
+    Account account = new Account(123);
     repository.save(account);
 
     assertThat(repository.findById(123))
@@ -32,10 +31,10 @@ public class AccountRepositoryTest {
   @Test
   public void nonEmptyRepositoryReturnsNullForIdNotFound() throws Exception {
     AccountRepository repository = new AccountRepository();
-    NecessitiesAccount account123 = new NecessitiesAccount(123);
+    Account account123 = new Account(123);
     repository.save(account123);
 
-    NecessitiesAccount account456 = new NecessitiesAccount(456);
+    Account account456 = new Account(456);
     repository.save(account456);
 
     assertThat(repository.findById(123))

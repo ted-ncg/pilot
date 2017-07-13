@@ -1,5 +1,6 @@
-package com.visa.ncg.canteen.domain;
+package com.visa.ncg.canteen.data;
 
+import com.visa.ncg.canteen.domain.Account;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
@@ -11,13 +12,13 @@ public class AccountRepository {
     System.out.println("AccountRepository created");
   }
 
-  private Map<Integer, NecessitiesAccount> accountMap = new HashMap<>();
+  private Map<Integer, Account> accountMap = new HashMap<>();
 
-  public NecessitiesAccount findById(int id) {
+  public Account findById(int id) {
     return accountMap.get(id);
   }
 
-  public void save(NecessitiesAccount account) {
+  public void save(Account account) {
     accountMap.put(account.getId(), account);
   }
 

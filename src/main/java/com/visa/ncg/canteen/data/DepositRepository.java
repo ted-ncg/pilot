@@ -1,6 +1,6 @@
-package com.visa.ncg.canteen.domain;
+package com.visa.ncg.canteen.data;
 
-import com.visa.ncg.canteen.Sequence;
+import com.visa.ncg.canteen.domain.Deposit;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;

@@ -1,35 +1,34 @@
-package com.visa.ncg.canteen;
+package com.visa.ncg.canteen.domain;
 
-import com.visa.ncg.canteen.domain.NecessitiesAccount;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class NecessitiesAccountDepositTest {
+public class AccountDepositTest {
 
   @Test
   public void depositZeroOrNegativeDollarsToAccountResultsInExceptionThrown() {
-    NecessitiesAccount necessitiesAccount = new NecessitiesAccount(0);
-    assertThatThrownBy(() -> necessitiesAccount.deposit(0))
+    Account account = new Account(0);
+    assertThatThrownBy(() -> account.deposit(0))
         .isInstanceOf(IllegalArgumentException.class)
         .hasMessage("Deposits of negative or 0 dollars is not allowed.");
-    assertThatThrownBy(() -> necessitiesAccount.deposit(-1))
+    assertThatThrownBy(() -> account.deposit(-1))
         .isInstanceOf(IllegalArgumentException.class);
   }
 
   @Test
   public void aNewAccountWithDepositOf10DollarsResultsInAccountHaving10DollarBalance() {
-    NecessitiesAccount necessitiesAccount = new NecessitiesAccount(0);
-    necessitiesAccount.deposit(10);
-    assertThat(necessitiesAccount.getBalance())
+    Account account = new Account(0);
+    account.deposit(10);
+    assertThat(account.getBalance())
         .isEqualTo(10);
   }
 
   @Test
   public void aNewAccountHasZeroBalance() {
-    NecessitiesAccount necessitiesAccount = new NecessitiesAccount(0);
-    assertThat(necessitiesAccount.getBalance())
+    Account account = new Account(0);
+    assertThat(account.getBalance())
         .isZero();
   }
 }

@@ -1,7 +1,7 @@
 package com.visa.ncg.canteen.adapter;
 
+import com.visa.ncg.canteen.data.DepositRepository;
 import com.visa.ncg.canteen.domain.Deposit;
-import com.visa.ncg.canteen.domain.DepositRepository;
 import com.visa.ncg.canteen.domain.DepositService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

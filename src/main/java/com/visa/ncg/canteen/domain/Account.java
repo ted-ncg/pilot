@@ -1,10 +1,13 @@
 package com.visa.ncg.canteen.domain;
 
-public class NecessitiesAccount {
-  private final int id;
+public class Account {
+  private int id;
   private int balance;
 
-  public NecessitiesAccount(int id) {
+  public Account() {
+  }
+
+  public Account(int id) {
     this.id = id;
   }
 
