@@ -10,7 +10,7 @@ public class DepositServiceTest {
 
   @Test
   public void processDepositGivenNonExistentAccountIdThrowsException() {
-    Deposit deposit = new Deposit(12, 33, 10);
+    Deposit deposit = new Deposit(33, 10);
     AccountRepository accountRepository = new AccountRepository();
     DepositService depositService = new DepositService(accountRepository);
 
@@ -26,7 +26,7 @@ public class DepositServiceTest {
     int initialBalance = account.getBalance();
     accountRepository.save(account);
 
-    Deposit deposit = new Deposit(14, 123, 30);
+    Deposit deposit = new Deposit(123, 30);
     depositService.process(deposit);
 
     int newBalance = accountRepository.findById(123).getBalance();

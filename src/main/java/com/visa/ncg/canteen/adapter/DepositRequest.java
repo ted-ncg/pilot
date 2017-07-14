@@ -1,19 +1,10 @@
 package com.visa.ncg.canteen.adapter;
 
-import com.visa.ncg.canteen.data.DepositRepository;
 import com.visa.ncg.canteen.domain.Deposit;
-import org.springframework.beans.factory.annotation.Autowired;
 
 public class DepositRequest {
   private int amount;
   private int accountId;
-
-  private final DepositRepository depositRepository;
-
-  @Autowired
-  public DepositRequest(DepositRepository depositRepository) {
-    this.depositRepository = depositRepository;
-  }
 
   public int getAmount() {
     return amount;
@@ -32,8 +23,7 @@ public class DepositRequest {
   }
 
   Deposit getAsDeposit() {
-    int id = depositRepository.nextId();
-    return new Deposit(id, accountId, amount);
+    return new Deposit(accountId, amount);
   }
 
 }

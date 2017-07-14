@@ -1,7 +1,6 @@
 package com.visa.ncg.canteen;
 
 import com.visa.ncg.canteen.data.AccountRepository;
-import com.visa.ncg.canteen.data.DepositRepository;
 import com.visa.ncg.canteen.domain.DepositService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,13 +19,7 @@ public class CanteenApplication {
   }
 
   @Bean
-  public DepositRepository depositRepository() {
-    return new DepositRepository();
+  public DepositService depositService(AccountRepository accountRepository) {
+    return new DepositService(accountRepository);
   }
-
-  @Bean
-  public DepositService depositService() {
-    return new DepositService(accountRepository());
-  }
-
 }
